@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-50 text-ink-900 antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-ink-300 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-ink-400;
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease-in-out;
+}
+
+.card-3d.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* Anki card content (front/back), rendered from sanitized note HTML.
+   Anki decks routinely embed images/audio/video/tables with the original
+   author's own (often fixed-width) styles, so we constrain everything to
+   the card container to keep it responsive on small screens. */
+.card-content {
+  width: 100%;
+}
+
+.card-content img,
+.card-content video {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 0.75rem;
+  margin: 0.5rem auto;
+  display: block;
+}
+
+.card-content audio {
+  width: 100% !important;
+  max-width: 22rem;
+  margin: 0.5rem auto;
+  display: block;
+}
+
+.card-content iframe {
+  width: 100% !important;
+  aspect-ratio: 16 / 9;
+  height: auto !important;
+  border: 0;
+  border-radius: 0.75rem;
+  margin: 0.5rem auto;
+  display: block;
+}
+
+.card-content a {
+  color: #2563eb;
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.card-content-dark a {
+  color: #93c5fd;
+}
+
+.card-content table {
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+/* Anki fields can contain wide tables; scroll them instead of breaking layout */
+.card-content table,
+.card-content pre {
+  display: block;
+  overflow-x: auto;
+}
+
+.card-content * {
+  max-width: 100%;
+  word-break: break-word;
+}
+
+.hero-gradient {
+  background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(59, 130, 246, 0.12), transparent),
+              radial-gradient(ellipse 60% 40% at 80% 40%, rgba(16, 185, 129, 0.08), transparent);
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
